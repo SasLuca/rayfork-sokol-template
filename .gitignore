@@ -1,0 +1,10 @@
+*
+
+!.gitignore
+!CMakeLists.txt
+
+!libs/
+!libs/**
+
+!source/
+!source/**
