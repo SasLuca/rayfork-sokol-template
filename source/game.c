@@ -1,19 +1,21 @@
-#include "game.h"
+#include "platform.h"
 
-int screen_width  = 800;
-int screen_height = 450;
+int screen_width         = 800;
+int screen_height        = 450;
+const char* window_title = "rayfork template";
 
 rf_context ctx;
 rf_render_batch batch;
 
 extern void game_init(rf_gfx_backend_init_data* gfx_data)
 {
-    rf_init(&ctx, screen_width, screen_height, RF_DEFAULT_LOGGER, gfx_data);
+    rf_init(&ctx, screen_width, screen_height, gfx_data, RF_DEFAULT_LOGGER, RF_LOG_TYPE_ALL);
+
     batch = rf_create_default_render_batch(RF_DEFAULT_ALLOCATOR);
     rf_set_active_render_batch(&batch);
 }
 
-extern void game_update()
+extern void game_update(const input_t* input)
 {
     rf_begin();
     {
@@ -27,7 +29,7 @@ extern void game_update()
     rf_end();
 }
 
-extern void game_resize(int width, int height)
+extern void game_window_resize(int width, int height)
 {
     screen_width  = width;
     screen_height = height;

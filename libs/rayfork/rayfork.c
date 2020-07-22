@@ -37,6 +37,8 @@ RF_INTERNAL RF_THREAD_LOCAL rf_error_type rf__last_error;
 
 RF_INTERNAL void rf_log_impl(const char* file, int line, const char* proc_name, rf_log_type log_type, const char* msg, ...)
 {
+    if (!(log_type & rf_ctx.log_filter)) return;
+
     va_list args;
 
     va_start(args, msg);
@@ -116,7 +118,7 @@ RF_API void rf_libc_free_wrapper(void* user_data, void* ptr_to_free)
     free(ptr_to_free);
 }
 
-#pragma endregion 
+#pragma endregion
 
 #pragma region rand
 
@@ -25757,12 +25759,13 @@ void rf_cgltf_io_release(const struct cgltf_memory_options* memory_options, cons
 #pragma region init
 RF_INTERNAL void rf_gfx_backend_init(rf_gfx_backend_init_data* gfx_data);
 
-RF_API void rf_init(rf_context* ctx, int screen_width, int screen_height, rf_log_proc logger, rf_gfx_backend_init_data* gfx_data)
+RF_API void rf_init(rf_context* ctx, int screen_width, int screen_height, rf_gfx_backend_init_data* gfx_data, rf_log_proc logger, rf_log_type log_type)
 {
     *ctx = (rf_context) {0};
     rf_set_global_context_pointer(ctx);
 
     rf_ctx.log = logger;
+    rf_ctx.log_filter = log_type;
     rf_ctx.current_matrix_mode = -1;
     rf_ctx.screen_scaling = rf_mat_identity();
 
