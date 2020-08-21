@@ -6,13 +6,7 @@
 - [QtCreator][qtcreator-link]
 - [Visual Studio Code][vscode-link] with [CMake plugins][vscode-cmake-plugins]
 
-In any of these IDEs you should be able ot just run the `your-project-name-goes-here` target and it will work.
-
-##### This template uses: 
-- [rayfork][rayfork-link] (the amalgamated version) 
-- [sokol-app][sokol-app-link] for the platform layer 
-- [sokol-time][sokol-time-link] for high resolution timing
-- [glad][glad-link] for OpenGL loading.
+In any of these IDEs you should be able to just run the `your-project-name-goes-here` target and it will work.
 
 ##### Notes:
 - Bear in mind that rayfork is still under development and not officially released yet, you can use this template to experiment with rayfork if you are curious until it gets officially released. Once rayfork will be stable the `libs/rayfork` folder will be always updated with the latest release of rayfork, until then updates might be sparse.
@@ -22,6 +16,12 @@ In any of these IDEs you should be able ot just run the `your-project-name-goes-
 - The gitignore file of this template works by first ignoring all files using `*` and then allowing specific files/folders like `!file` `!folder` `!folder/**`. If you don't like this setup feel free to change the gitignore, but if you keep it be aware in case you add new folders, or files in the root of the project. 
 
 - Feel free to delete this readme.
+
+##### This template uses: 
+- [rayfork][rayfork-link] (the amalgamated version).
+- [sokol-app][sokol-app-link] for the platform layer.
+- [sokol-time][sokol-time-link] for high resolution timing.
+- [glad][glad-link] for OpenGL loading.
 
 <!-- Links -->
 [rayfork-link]:    https://github.com/SasLuca/rayfork/tree/rayfork-0.9
