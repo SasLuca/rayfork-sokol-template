@@ -22,3 +22,8 @@ if (APPLE)
     target_link_libraries(${CMAKE_PROJECT_NAME} PUBLIC "-framework Cocoa" "-framework QuartzCore" "-framework OpenGL")
     target_compile_options(${CMAKE_PROJECT_NAME} PUBLIC "-fobjc-arc" "-ObjC")
 endif()
+
+# Enable Linux specific flags and link against it's specific libraries
+if (UNIX)
+    target_link_libraries(${CMAKE_PROJECT_NAME} PUBLIC m dl pthread X11 Xi Xcursor)
+endif()
