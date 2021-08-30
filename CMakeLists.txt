@@ -24,6 +24,6 @@ if (APPLE)
 endif()
 
 # Enable Linux specific flags and link against it's specific libraries
-if (UNIX)
+if (UNIX AND NOT APPLE)
     target_link_libraries(${CMAKE_PROJECT_NAME} PUBLIC m dl pthread X11 Xi Xcursor)
 endif()
