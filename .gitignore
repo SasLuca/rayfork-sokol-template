@@ -15,3 +15,5 @@
 !assets/**
 !libs/**
 !src/**
+
+.DS_Store

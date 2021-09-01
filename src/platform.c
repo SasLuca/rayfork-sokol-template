@@ -17,6 +17,13 @@ static platform_input_state input_state;
 
 static void sokol_on_init(void)
 {
+#ifdef RAYFORK_PLATFORM_MACOS
+    CFURLRef url = CFBundleCopyResourcesDirectoryURL(CFBundleGetMainBundle());
+    char path[PATH_MAX];
+    if (!CFURLGetFileSystemRepresentation(url, true, (UInt8 *) path, sizeof(path)) || chdir(path) != 0)
+        exit(-1);
+    CFRelease(url);
+#endif
     gladLoadGL();
 
     game_init(RF_DEFAULT_GFX_BACKEND_INIT_DATA);
